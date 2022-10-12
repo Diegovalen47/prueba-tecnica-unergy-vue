@@ -1,5 +1,4 @@
 <script>
-
 import { defineComponent } from "vue";
 import axios from "axios";
 import Project from "./components/Project.vue";
@@ -21,9 +20,9 @@ export default defineComponent({
     textSearch() {
       this.filteredProjects = this.projects.filter((project) => {
         console.log(project.nombreProyecto.toLowerCase());
-        return (
-          project.nombreProyecto.toLowerCase().includes(this.textSearch.toLowerCase())
-        )
+        return project.nombreProyecto
+          .toLowerCase()
+          .includes(this.textSearch.toLowerCase());
       });
     },
   },
@@ -32,16 +31,21 @@ export default defineComponent({
     this.projects = res.data;
     this.filteredProjects = res.data;
   },
-  components: { Project }
+  components: { Project },
 });
-
 </script>
 
 <template>
   <h1>Proyectos</h1>
-  <input type="text" placeholder="Buscar Proyecto" v-model="textSearch" autofocus>
+  <input
+    type="text"
+    placeholder="Buscar Proyecto"
+    v-model="textSearch"
+    autofocus
+  />
   <div class="container">
     <Project
+      v-if="filteredProjects.length > 0"
       v-for="(project, index) in filteredProjects"
       :key="index"
       :nombreProyecto="project.nombre_corto_l[0].text"
@@ -51,6 +55,11 @@ export default defineComponent({
       :fechaInicioRentabilidad="project.fecha_inicio_rentabilidad"
       :index="index"
     />
+    <div v-else>
+      <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
+        <circle cx="50" cy="50" r="20" />
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -75,5 +84,42 @@ body
   flex-direction: row
   justify-content: center
   flex-wrap: wrap
+
+  /* Clases par el funcionamiento del loading */
+.ring 
+  --uib-size: 10em
+  --uib-speed: 2s
+  --uib-color: black
+  
+  height: var(--uib-size)
+  width: var(--uib-size)
+  vertical-align: middle
+  transform-origin: center
+  animation: rotate var(--uib-speed) linear infinite
+  margin: 10em
+
+.ring circle
+  fill: none
+  stroke: var(--uib-color)
+  stroke-dasharray: 1, 200
+  stroke-dashoffset: 0
+  stroke-linecap: round
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite
+
+@keyframes rotate
+  100% 
+    transform: rotate(360deg)
+
+@keyframes stretch
+  0% 
+    stroke-dasharray: 1, 200
+    stroke-dashoffset: 0
+
+  50% 
+    stroke-dasharray: 90, 200
+    stroke-dashoffset: -35px
+
+  100% 
+    stroke-dashoffset: -124px
 
 </style>
