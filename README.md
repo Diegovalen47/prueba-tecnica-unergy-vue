@@ -5,6 +5,7 @@ By: Valentin Osorio
 Using:
 - Vue.js
 - Sass
+- Axios
 
 Para ejecutar la solucion de forma correcta, seguir los siguientes pasos:
 
