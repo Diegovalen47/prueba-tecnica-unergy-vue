@@ -1,19 +1,13 @@
 # prueba-tecnica-unergy-vue
 
-## Project setup
-```
-npm install
-```
+By: Valentin Osorio
+Using:
+- Vue.js
+- Sass
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Para ejecutar la solucion de forma correcta, seguir los siguientes pasos:
+1. Clonar el repositorio
+2. Ejecutar el comando <code>npm install</code> para instalar las dependencias
+3. Ejecutar el comando <code>npm run serve</code> para ejecutar la aplicacion
+4. Abrir el navegador en la direccion `http://localhost:3000/`
+5. Listo!
