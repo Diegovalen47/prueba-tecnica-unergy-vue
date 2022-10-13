@@ -70,7 +70,7 @@ export default defineComponent({
         <!-- Para los íconos hacemos uso de material icons -->
         <!-- La retabilidad al estar en decimales, se convierte a porcentaje con
              tomando solamente un decimal -->
-        <span class="span-title">{{(Number(rentabilidadEstimada)*100).toFixed(1)}}% <i class="material-icons">trending_up</i></span>
+        <span class="span-title-one">{{(Number(rentabilidadEstimada)*100).toFixed(1)}}% <i class="material-icons">trending_up</i></span>
         <span class="span-description">Rentabilidad</span>
       </div>
     </div>
@@ -79,7 +79,7 @@ export default defineComponent({
         <i class="material-icons">location_on</i>
         <div class="flex-col">
           <div class="span-title">{{localizacion}}</div>
-          <div class="span-description">Localizacion</div>
+          <div class="span-description">Localización</div>
         </div>
       </div>
       <div class="flex-row">
@@ -94,7 +94,7 @@ export default defineComponent({
         <div class="flex-col">
           <!-- Del porcentaje de financiacion tomamos solo 2 decimales -->
           <div class="span-title">{{Number(porcentajeFinanciacion).toFixed(2)}}%</div>
-          <div class="span-description">Financiacion</div>
+          <div class="span-description">Financiación</div>
         </div>
       </div>
     </div>
@@ -148,7 +148,7 @@ $black-color: #000
   cursor: pointer
   position: absolute // posicion absoluta para ubicarla sobre la imagen
   translate: 1em 1em
-  box-shadow: 0 2px 40px $shadow
+  box-shadow: 0 2px 40px $black-color
 
 .mini-box
   display: flex
@@ -157,10 +157,15 @@ $black-color: #000
   border-radius: 25px
   color: #000
   position: absolute // posicion absoluta para ubicarla sobre la imagen
-  translate: 20em -8em
+  translate: 18em -8em
   margin: 1em
   padding: 1em
   box-shadow: 0 2px 40px $black-color
+
+.span-title-one
+  font-size: 1.5em
+  font-weight: bold
+  text-align: center
 
 .span-title
   font-size: 1.5em
@@ -168,6 +173,7 @@ $black-color: #000
 
 .span-description
   color: $purple-color
+  font-size: 1.2em
   font-weight: bold
 
 .footer

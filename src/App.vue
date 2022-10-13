@@ -70,17 +70,21 @@ export default defineComponent({
   </header>
 
   <div class="container">
-    <Project
-      v-if="filteredProjects.length > 0"
-      v-for="(project, index) in filteredProjects"
-      :key="index"
-      :nombreProyecto="project.nombre_corto_l[0].text"
-      :porcentajeFinanciacion="project.porc_avance_financiacion"
-      :rentabilidadEstimada="project.rentabilidad"
-      :localizacion="project.id_caracterizacion.ciudad"
-      :fechaInicioRentabilidad="project.fecha_inicio_rentabilidad"
-      :imagenProjecto="project.project_file[0].nomfile_img"
-    />
+    <div v-if="filteredProjects.length > 0" class="container">
+      <Project
+        v-for="(project, index) in filteredProjects"
+        :key="index"
+        :nombreProyecto="project.nombre_corto_l[0].text"
+        :porcentajeFinanciacion="project.porc_avance_financiacion"
+        :rentabilidadEstimada="project.rentabilidad"
+        :localizacion="project.id_caracterizacion.ciudad"
+        :fechaInicioRentabilidad="project.fecha_inicio_rentabilidad"
+        :imagenProjecto="project.project_file[0].nomfile_img"
+      />
+    </div>
+    <div v-else-if="filteredProjects.length === 0 && textSearch !== ''">
+      <h2>No se encontraron proyectos</h2>
+    </div>
     <!-- Renderizado condicional de un loader mientras se obtienen los datos de la API -->
     <div v-else>
       <svg class="ring" viewBox="25 25 50 50" stroke-width="5">
@@ -93,7 +97,8 @@ export default defineComponent({
 <style lang="sass">
 /* Variables para colores y medidas que se repiten */
 $body-color: #10182f
-$background-body-color: #f7f8fc
+$background-body-color: #fff
+$purple-color: #7d47d4
 $uib-size: 10em
 $uib-speed: 2s
 $uib-color: #000
@@ -121,10 +126,13 @@ input
   width: 100%
   align-items: center
   padding: 0.7em 
-  font-size: 2em
-  border: 1px solid #ccc
-  border-radius: 4px
+  font-size: 1.5em
+  border: 1px solid $purple-color
+  border-radius: 1em
   box-sizing: border-box
+
+.land-image
+  
 
 /* Estilos del contenedor principal:
   utilizando flex y direccion row alineados
