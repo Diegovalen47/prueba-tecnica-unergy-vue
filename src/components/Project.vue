@@ -10,28 +10,28 @@ export default defineComponent({
   props: {
     nombreProyecto: {
       type: String,
-      required: true
+      required: true,
     },
     porcentajeFinanciacion: {
       type: Number,
-      required: true
+      required: true,
     },
     rentabilidadEstimada: {
       type: Number,
-      required: true
+      required: true,
     },
     localizacion: {
       type: String,
-      required: true
+      required: true,
     },
     fechaInicioRentabilidad: {
       type: String,
-      required: true
+      required: true,
     },
     imagenProjecto: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   /* 
   Se crea un arreglo de imagenes de proyectos genéricas
@@ -46,31 +46,35 @@ export default defineComponent({
         `zonaFranca.webp`,
         `tierraAlta.webp`,
         `clinicaSomer.webp`,
-        `defaultProjectImage.png`
-      ]
+        `defaultProjectImage.png`,
+      ],
     };
-  }
+  },
 });
-
 </script>
 
 <template>
   <div class="card">
     <div class="card-header">
-      <span class="tag">{{nombreProyecto}}</span>
+      <span class="tag">{{ nombreProyecto }}</span>
       <!-- Se escoge aleatoriamente una imagen del arreglo, para mostrar -->
       <!-- De todas formas en el alt de la imagen, coloco la url de la imagen
            a pesar de que una buena practica sería colocar algo descriptivo de
            la imagen en este campo -->
-      <img 
-        :src="`/img/${projectImages[Math.floor(Math.random() * projectImages.length)]}`"
+      <img
+        :src="`/img/${
+          projectImages[Math.floor(Math.random() * projectImages.length)]
+        }`"
         :alt="imagenProjecto"
-      >
+      />
       <div class="mini-box">
         <!-- Para los íconos hacemos uso de material icons -->
         <!-- La retabilidad al estar en decimales, se convierte a porcentaje con
              tomando solamente un decimal -->
-        <span class="span-title-one">{{(Number(rentabilidadEstimada)*100).toFixed(1)}}% <i class="material-icons">trending_up</i></span>
+        <span class="span-title-one"
+          >{{ (Number(rentabilidadEstimada) * 100).toFixed(1) }}%
+          <i class="material-icons">trending_up</i></span
+        >
         <span class="span-description">Rentabilidad</span>
       </div>
     </div>
@@ -78,14 +82,14 @@ export default defineComponent({
       <div class="flex-row">
         <i class="material-icons">location_on</i>
         <div class="flex-col">
-          <div class="span-title">{{localizacion}}</div>
+          <div class="span-title">{{ localizacion }}</div>
           <div class="span-description">Localización</div>
         </div>
       </div>
       <div class="flex-row">
         <i class="material-icons">alarm_on</i>
         <div class="flex-col">
-          <div class="span-title">{{fechaInicioRentabilidad}}</div>
+          <div class="span-title">{{ fechaInicioRentabilidad }}</div>
           <div class="span-description">Fecha Inicio Rentabilidad</div>
         </div>
       </div>
@@ -93,7 +97,9 @@ export default defineComponent({
         <i class="material-icons">monetization_on</i>
         <div class="flex-col">
           <!-- Del porcentaje de financiacion tomamos solo 2 decimales -->
-          <div class="span-title">{{Number(porcentajeFinanciacion).toFixed(2)}}%</div>
+          <div class="span-title">
+            {{ Number(porcentajeFinanciacion).toFixed(2) }}%
+          </div>
           <div class="span-description">Financiación</div>
         </div>
       </div>
@@ -112,7 +118,7 @@ $purple-color: #7d47d4
 $purple-darker-color: #5e2f8a
 $black-color: #000
 /* Estilos generales de la carta */
-.card 
+.card
   margin: 0.5em
   background-color: $white-color
   border-radius: 1.5em
@@ -197,9 +203,9 @@ $black-color: #000
   background-color: $purple-darker-color
   transform: scale(1.05)
 
-/* 
-  Clases flex con el fin de ubicar 
-  los datos detro del body de la carta 
+/*
+  Clases flex con el fin de ubicar
+  los datos detro del body de la carta
   */
 .flex-row
   display: flex

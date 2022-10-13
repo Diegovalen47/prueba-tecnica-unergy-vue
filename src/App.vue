@@ -43,14 +43,11 @@ export default defineComponent({
         quedaran en filteredProjects, con la ayude de filter obtenemos un nuevo 
         arreglo filtrado (sin modificar el original) con aqueyos que cumplan la condicion
        */
-      this.filteredProjects = this.projects.filter(
-        (project) => {
-          return (
-            String(project.nombre_corto_l[0].text).toLowerCase()
-            .includes(String(this.textSearch).toLowerCase())
-          )
-        }
-      );
+      this.filteredProjects = this.projects.filter((project) => {
+        return String(project.nombre_corto_l[0].text)
+          .toLowerCase()
+          .includes(String(this.textSearch).toLowerCase());
+      });
     },
   },
   components: { Project },
@@ -115,7 +112,7 @@ body
 
 header
   display: flex
-  flex-direction: column  
+  flex-direction: column
   justify-content: center
   margin: 1em 10em 1em 10em
 
@@ -125,14 +122,13 @@ h1
 input
   width: 100%
   align-items: center
-  padding: 0.7em 
+  padding: 0.7em
   font-size: 1.5em
   border: 1px solid $purple-color
   border-radius: 1em
   box-sizing: border-box
 
 .land-image
-  
 
 /* Estilos del contenedor principal:
   utilizando flex y direccion row alineados
@@ -144,7 +140,7 @@ input
   justify-content: center
   flex-wrap: wrap
 
-  /* Clases para el funcionamiento del loading */
+/* Clases para el funcionamiento del loading */
 .ring
   height: $uib-size
   width: $uib-size
@@ -176,4 +172,5 @@ input
 
   100%
     stroke-dashoffset: -124px
+
 </style>
